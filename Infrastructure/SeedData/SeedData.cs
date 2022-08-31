@@ -17,7 +17,7 @@ namespace Infrastructure.SeedData
         }
         public static Task SeedUsers(UserManager<MyUser> userManager)
         {
-            if (userManager.FindByNameAsync("09366178192").Result == null)
+            if (userManager.FindByNameAsync("09017815959").Result == null)
             {
                 var user = new MyUser()
                 {
@@ -28,7 +28,7 @@ namespace Infrastructure.SeedData
                     EmailConfirmed = true,
                 };
 
-                var result = userManager.CreateAsync(user, "a123456").Result;
+                var result = userManager.CreateAsync(user, "a123456789").Result;
 
                 if (result.Succeeded)
                 {

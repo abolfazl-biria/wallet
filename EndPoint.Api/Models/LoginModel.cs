@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using FluentValidation;
+using System.ComponentModel.DataAnnotations;
 
 namespace EndPoint.Api.Models
 {
@@ -9,5 +10,18 @@ namespace EndPoint.Api.Models
 
         [Required]
         public string Password { get; set; }
+    }
+
+    public class LoginModelValidator : AbstractValidator<LoginModel>
+    {
+        public LoginModelValidator()
+        {
+            RuleFor(p => p.Username).NotNull().NotEmpty();
+
+            RuleFor(p => p.Password)
+                .NotNull()
+                .NotEmpty()
+                .MinimumLength(8);
+        }
     }
 }
